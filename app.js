@@ -45,8 +45,16 @@ app.post("/", function (req, res) {
   const item1 = new Item({
     itemName: newListItem
   })
-  item1.save();
-  res.redirect("/")
+  item1.save((err) => {
+    if (!err) {
+      res.redirect("/")
+    }
+    else {
+      res.redirect("/")
+      console.log(err)
+    }
+  });
+
 });
 
 
