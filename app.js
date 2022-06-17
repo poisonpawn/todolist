@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require("express");
 const bodyParser = require("body-parser");
 
@@ -11,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 // mongoose
-mongoose.connect("mongodb+srv://uditkaushik:fjdksl@cluster0.kxx2n.mongodb.net/?retryWrites=true&w=majority/itemsDB", { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(`mongodb+srv://uditkaushik:${process.env.MONGO_ADMIN_PASS}@cluster0.kxx2n.mongodb.net/?retryWrites=true&w=majority/itemsDB`, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // items schema
 const itemSchema = new mongoose.Schema({
